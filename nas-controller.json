@@ -1,14 +1,14 @@
 {
   "name": "Relay",
   "description": "Cross-device sync & messaging — text, photos, files with real-time SSE",
-  "icon": "💬",
+  "icon": "./public/icon.svg",
   "defaultPort": 3000,
   "env": {
     "NODE_ENV": "production",
-    "DATA_DIR": "/data",
+    "DATA_DIR": "/app/relay-data",
     "RELAY_PASSWORD": ""
   },
   "volumes": [
-    "/mnt/user/appdata/relay-data:/data"
+    "/mnt/user/3_secret/relay-data:/app/relay-data"
   ]
 }

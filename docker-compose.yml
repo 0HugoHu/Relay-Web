@@ -5,10 +5,10 @@ services:
     ports:
       - "3220:3000"
     volumes:
-      - /mnt/user/appdata/relay-data:/data
+      - /mnt/user/3_secret/relay-data:/app/relay-data
     environment:
       - NODE_ENV=production
-      - DATA_DIR=/data
+      - DATA_DIR=/app/relay-data
       - PORT=3000
       - TZ=Asia/Shanghai
       # Set RELAY_PASSWORD only for initial setup or emergency recovery.
