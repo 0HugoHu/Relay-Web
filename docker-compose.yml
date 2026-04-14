@@ -1,0 +1,23 @@
+services:
+  relay:
+    build: .
+    container_name: relay
+    ports:
+      - "3220:3000"
+    volumes:
+      - /mnt/user/appdata/relay-data:/data
+    environment:
+      - NODE_ENV=production
+      - DATA_DIR=/data
+      - PORT=3000
+      - TZ=Asia/Shanghai
+      # Set RELAY_PASSWORD only for initial setup or emergency recovery.
+      # After first setup it is saved hashed to /data/config.json.
+      # Remove this env var after first login.
+      # - RELAY_PASSWORD=changeme
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
